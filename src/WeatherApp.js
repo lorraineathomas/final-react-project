@@ -38,7 +38,7 @@ export default function WeatherApp(props) {
 
     
     
-    if(weatherDataset.ready){
+   //if (weatherDataset.ready) {
     return (
         <div className="WeatherApp">
         <header>
@@ -78,11 +78,12 @@ export default function WeatherApp(props) {
         </footer>
         </div>
     );
-        
-} else {
+}    
+/* 
+else {
     cityLookup();
     return "Searching..."
-}}
+}}*/
 
 //Pure js syntax
 /*
