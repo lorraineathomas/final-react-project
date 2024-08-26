@@ -35,7 +35,7 @@ export default function WeatherApp() {
     }
     
     function searchCity(city){
-        let apiKey = "8944afa6845bd7c413a687258d3211ef";
+        let apiKey = "842b36d55cb28eba74a018029d56b04c";
         let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
         axios.get(apiUrl).then(refreshWeather);
     }
@@ -59,6 +59,7 @@ export default function WeatherApp() {
         <div className="WeatherApp">
         <div class="weather-app">
         <header>
+            <h1>WEATHER WATCH 👀</h1>
             <form class="search-form" id="search-form">
             <input class="search-form-input" id="search-form-input" type="search" placeholder="Enter a city..." required />
             <input class="search-form-button" type="submit" value="Search"/>
