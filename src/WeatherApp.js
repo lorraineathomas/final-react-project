@@ -21,16 +21,11 @@ export default function WeatherApp(props) {
         });
     }
 
-    function refreshReactWeather(response){
-        console.log(response.data);
-        setData(response.data.main.temp);
-    }
-
     function handleCityChange(event){
         searchCity(event.target.value);
     }
     
-    function handleClick(event){
+    function handleButtonClick(event){
         event.preventDefault();
         cityLookup();    
     }
@@ -48,8 +43,8 @@ export default function WeatherApp(props) {
         <div className="WeatherApp">
         <header>
             <h1 id="app-title">WEATHER WATCH</h1>
-            <form className="search-form" id="search-form">
-            <input className="search-form-input" id="search-form-input" type="search" placeholder="Enter a city..." required />
+            <form className="search-form" id="search-form" onSubmit={handleButtonClick}>
+            <input className="search-form-input" id="search-form-input" type="search" placeholder="Enter a city..." onChange={handleCityChange} />
             <input className="search-form-button" type="submit" value="Search"/>
             </form>
         </header>
