@@ -4,20 +4,20 @@ import "./WeatherApp.css";
 import axios from "axios";
 
 export default function WeatherApp(props) {
-    const [weatherDataset , setData ] = useState({ready:false});
-    const [city, searchCity ] = useState(props.c);
+    const [ weatherDataset , setData ] = useState({ready:false});
+    const [ city, searchCity ] = useState(props.c);
 
     function refreshWeather(response){
         setData({
             ready: true,
-            coord: response.data.coord,
-            temperature: response.data.main.temp,
-            humidity: response.data.main.humidity,
-            date: new Date(response.data.dt * 1000),
-            description: response.data.weather[0].description,
-            icon: response.data.weather[0].icon,
+            coord: response.data.coordinates,
+            temperature: response.data.temperature.current,
+            humidity: response.data.temperature.humidity,
+            date: new Date(response.data.time * 1000),
+            description: response.data.condition.description,
+            icon: response.data.condition.icon,
             wind: response.data.wind.speed,
-            city: response.data.name
+            city: response.data.city
         });
     }
 
@@ -27,7 +27,7 @@ export default function WeatherApp(props) {
     
     function handleButtonClick(event){
         event.preventDefault();
-        cityLookup();    
+        cityLookup(city);    
     }
     
     function cityLookup(city){
@@ -38,7 +38,7 @@ export default function WeatherApp(props) {
 
     
     
-   //if (weatherDataset.ready) {
+   if (weatherDataset.ready) {
     return (
         <div className="WeatherApp">
         <header>
@@ -78,12 +78,14 @@ export default function WeatherApp(props) {
         </footer>
         </div>
     );
-}    
-/* 
+}
+}
+/*
 else {
     cityLookup();
     return "Searching..."
-}}*/
+}*/
+
 
 //Pure js syntax
 /*
