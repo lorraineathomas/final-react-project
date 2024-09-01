@@ -5,7 +5,7 @@ import WeatherApp from "./WeatherApp.js";
 function App() {
   return (
     <div className="App">
-      <WeatherApp />
+      <WeatherApp defaultCity="paris" />
     </div>
   );
 }

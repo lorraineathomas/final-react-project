@@ -78,6 +78,9 @@ export default function WeatherApp(props) {
         </footer>
         </div>
     );
+} else {
+    cityLookup();
+    return "Searching..."
 }
 }
 /*
