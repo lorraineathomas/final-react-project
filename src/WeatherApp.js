@@ -80,7 +80,7 @@ export default function WeatherApp(props) {
     );
 } else {
     cityLookup();
-    return "Searching..."
+    return "Loving life..."
 }
 }
 /*
