@@ -1,94 +1,123 @@
-import React , { useState } from "react";
+import React, { useState } from "react";
 import Forecast from "./Forecast.js";
 import "./WeatherApp.css";
 import axios from "axios";
 
 export default function WeatherApp(props) {
-    const [ weatherDataset , setData ] = useState({ready:false});
-    const [ city, searchCity ] = useState(props.c);
+  const [weatherDataset, setData] = useState({ ready: false });
+  const [city, searchCity] = useState(props.c);
 
-    function refreshWeather(response){
-        setData({
-            ready: true,
-            coord: response.data.coordinates,
-            temperature: response.data.temperature.current,
-            humidity: response.data.temperature.humidity,
-            date: new Date(response.data.time * 1000),
-            description: response.data.condition.description,
-            icon: response.data.condition.icon,
-            wind: response.data.wind.speed,
-            city: response.data.city
-        });
-    }
+  function refreshWeather(response) {
+    setData({
+      ready: true,
+      coord: response.data.coordinates,
+      temperature: response.data.temperature.current,
+      humidity: response.data.temperature.humidity,
+      date: new Date(response.data.time * 1000),
+      description: response.data.condition.description,
+      icon: response.data.condition.icon,
+      wind: response.data.wind.speed,
+      city: response.data.city,
+    });
+  }
 
-    function handleCityChange(event){
-        searchCity(event.target.value);
-    }
-    
-    function handleButtonClick(event){
-        event.preventDefault();
-        cityLookup(city);    
-    }
-    
-    function cityLookup(city){
-        let apiKey = "50fa4024e3b1d5eac2f51ab18a47e997";
-        let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
-        axios.get(apiUrl).then(refreshWeather);
-    }
+  function handleCityChange(event) {
+    searchCity(event.target.value);
+  }
 
-    
-    
-   if (weatherDataset.ready) {
+  function handleButtonClick(event) {
+    event.preventDefault();
+    cityLookup(city);
+  }
+
+  function cityLookup(city) {
+    let apiKey = "7d478f69e1b2f5d563653f13f5f91d76";
+    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(refreshWeather);
+  }
+
+  if (weatherDataset.ready) {
     return (
-        <div className="WeatherApp">
+      <div className="WeatherApp">
         <header>
-            <h1 id="app-title">WEATHER WATCH</h1>
-            <form className="search-form" id="search-form" onSubmit={handleButtonClick}>
-            <input className="search-form-input" id="search-form-input" type="search" placeholder="Enter a city..." onChange={handleCityChange} />
-            <input className="search-form-button" type="submit" value="Search"/>
-            </form>
+          <h1 id="app-title">WEATHER WATCH</h1>
+          <form
+            className="search-form"
+            id="search-form"
+            onSubmit={handleButtonClick}
+          >
+            <input
+              className="search-form-input"
+              id="search-form-input"
+              type="search"
+              placeholder="Enter a city..."
+              onChange={handleCityChange}
+            />
+            <input
+              className="search-form-button"
+              type="submit"
+              value="Search"
+            />
+          </form>
         </header>
 
         <main>
-            <div className="weather-app-data">
+          <div className="weather-app-data">
             <div>
-                <h1 className="weather-app-city" id="city">New York</h1>
-                <p className="weather-app-details">
-                <span id="time">Friday 15:00</span>, <span id="description">sunny</span>
+              <h1 className="weather-app-city" id="city">
+                New York
+              </h1>
+              <p className="weather-app-details">
+                <span id="time">Friday 15:00</span>,{" "}
+                <span id="description">sunny</span>
                 <br />
-                Humidity: <strong><span id="humidity">27</span>%</strong>, Wind: <strong><span id="wind-speed">19</span>mph</strong>
-                </p>
+                Humidity:{" "}
+                <strong>
+                  <span id="humidity">27</span>%
+                </strong>
+                , Wind:{" "}
+                <strong>
+                  <span id="wind-speed">19</span>mph
+                </strong>
+              </p>
             </div>
 
             <div className="weather-app-temperature-container">
-            <div className="weather-app-icon" id="icon">☀️</div>
-            <div className="weather-app-temperature-value" id="temperature">93</div>
-            <div className="weather-app-unit">&deg;F</div>
+              <div className="weather-app-icon" id="icon">
+                ☀️
+              </div>
+              <div className="weather-app-temperature-value" id="temperature">
+                93
+              </div>
+              <div className="weather-app-unit">&deg;F</div>
             </div>
-
-
-            </div> 
-            <Forecast />
+          </div>
+          <Forecast />
         </main>
 
-        <footer>Created by {" "}
-            <a href="https://github.com/lorraineathomas">Lorraine Thomas</a> and is {" "}
-            <a href="https://github.com/lorraineathomas/weather-app-project">hosted on Github</a>{" "}
-            and <a href="https://another-weather-search.netlify.app/">hosted on Netlify</a>
+        <footer>
+          Created by{" "}
+          <a href="https://github.com/lorraineathomas">Lorraine Thomas</a> and
+          is{" "}
+          <a href="https://github.com/lorraineathomas/weather-app-project">
+            hosted on Github
+          </a>{" "}
+          and{" "}
+          <a href="https://another-weather-search.netlify.app/">
+            hosted on Netlify
+          </a>
         </footer>
-        </div>
+      </div>
     );
-} else {
+  } /*else {
     cityLookup();
-    return "Loving life..."
+    return "Loving life...";
+  }
 }
-}
-/*
 else {
     cityLookup();
     return "Searching..."
 }*/
-
 
 //Pure js syntax
 /*
