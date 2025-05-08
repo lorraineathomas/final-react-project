@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import Forecast from "./Forecast.js";
-import "./WeatherApp.css";
-import axios from "axios";
-
-export default function WeatherApp(props) {
-  const [weatherDataset, setData] = useState({ ready: false });
-  const [city, searchCity] = useState(props.c);
+ import React, {useState} from "react";
+ import Forecast from "./Forecast.js";
+ import "./WeatherApp.css";
+ import axios from "axios";
+ 
+ export default function WeatherApp(props) {
+  const [weatherDataset, setData] = useState({ready:false});
+  const [city, searchCity] = useState(props.defaultCity);
 
   function refreshWeather(response) {
     setData({
@@ -13,52 +13,40 @@ export default function WeatherApp(props) {
       coord: response.data.coordinates,
       temperature: response.data.temperature.current,
       humidity: response.data.temperature.humidity,
-      date: new Date(response.data.time * 1000),
+      data: new Date(response.data.time * 1000),
       description: response.data.condition.description,
       icon: response.data.condition.icon,
       wind: response.data.wind.speed,
-      city: response.data.city,
+      city: response.data.city
     });
   }
-
-  function handleCityChange(event) {
+  function handleCityChange(event){
     searchCity(event.target.value);
   }
 
-  function handleButtonClick(event) {
+  function handleButtonClick(event){
     event.preventDefault();
-    cityLookup(city);
+    cityLookup();
   }
 
-  function cityLookup(city) {
+  function cityLookup(){
     let apiKey = "7d478f69e1b2f5d563653f13f5f91d76";
     let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+
     axios.get(apiUrl).then(refreshWeather);
   }
 
-  if (weatherDataset.ready) {
+  //if(weatherDataset.ready) {
     return (
       <div className="WeatherApp">
         <header>
-          <h1 id="app-title">WEATHER WATCH</h1>
-          <form
-            className="search-form"
-            id="search-form"
-            onSubmit={handleButtonClick}
-          >
-            <input
-              className="search-form-input"
-              id="search-form-input"
-              type="search"
-              placeholder="Enter a city..."
-              onChange={handleCityChange}
-            />
-            <input
-              className="search-form-button"
-              type="submit"
-              value="Search"
-            />
-          </form>
+          <h1 id="app-title">
+            WEATHER WATCH
+            </h1>
+            <form className="search-form" id="search-form" onSubmit={handleButtonClick}>
+              <input className="search-form-input" id="search-form-input" type="search" placeholder="Enter a city..." onChange={handleCityChange} />
+              <input className="search-form-button" type="submit" value="Search" />
+              </form>
         </header>
 
         <main>
@@ -67,15 +55,16 @@ export default function WeatherApp(props) {
               <h1 className="weather-app-city" id="city">
                 New York
               </h1>
+
               <p className="weather-app-details">
-                <span id="time">Friday 15:00</span>,{" "}
+                <span id="time">Friday 15:00</span>, {" "}
                 <span id="description">sunny</span>
                 <br />
                 Humidity:{" "}
                 <strong>
                   <span id="humidity">27</span>%
-                </strong>
-                , Wind:{" "}
+                </strong>,
+                Wind:{" "}
                 <strong>
                   <span id="wind-speed">19</span>mph
                 </strong>
@@ -83,33 +72,32 @@ export default function WeatherApp(props) {
             </div>
 
             <div className="weather-app-temperature-container">
-              <div className="weather-app-icon" id="icon">
-                ☀️
+            <div className="weather-app-icon" id="icon">☀️
+            </div>
+
+            <div className="weather-app-temperature-value" id="temperature">93
               </div>
-              <div className="weather-app-temperature-value" id="temperature">
-                93
+              <div className="weather-app-unit">&deg;F
               </div>
-              <div className="weather-app-unit">&deg;F</div>
             </div>
           </div>
-          <Forecast />
+
+          <Forecast/>
         </main>
 
         <footer>
-          Created by{" "}
-          <a href="https://github.com/lorraineathomas">Lorraine Thomas</a> and
-          is{" "}
-          <a href="https://github.com/lorraineathomas/weather-app-project">
-            hosted on Github
-          </a>{" "}
-          and{" "}
-          <a href="https://another-weather-search.netlify.app/">
-            hosted on Netlify
-          </a>
+          Created by {" "}
+          <a href="https://github.com/lorraineathomas">Lorraine Thomas</a> and is {" "}
+          <a href="https://github.com/lorraineathomas/weather-app-project">hosted on Github</a>{" "}
+          and {" "}
+          <a href="https://another-weather-search-netlify.app/">
+          hosted on Netlify</a>
         </footer>
       </div>
-    );
-  }} /*else {
+    )
+  }
+ //}
+ /*else {
     cityLookup();
     return "Loving life...";
   }
