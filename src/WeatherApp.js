@@ -109,7 +109,7 @@ export default function WeatherApp(props) {
         </footer>
       </div>
     );
-  } /*else {
+  }} /*else {
     cityLookup();
     return "Loving life...";
   }
