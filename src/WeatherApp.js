@@ -57,7 +57,7 @@
               </h1>
 
               <p className="weather-app-details">
-                <span id="time">Saturday 11:59PM</span>, {" "}
+                <span id="time">Sunday 11:59PM</span>, {" "}
                 <span id="description">sunny</span>
                 <br />
                 Humidity:{" "}
@@ -75,7 +75,7 @@
             <div className="weather-app-icon" id="icon">☀️
             </div>
 
-            <div className="weather-app-temperature-value" id="temperature">51
+            <div className="weather-app-temperature-value" id="temperature">54
               </div>
               <div className="weather-app-unit">&deg;F
               </div>
