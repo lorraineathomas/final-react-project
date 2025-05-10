@@ -53,11 +53,11 @@
           <div className="weather-app-data">
             <div>
               <h1 className="weather-app-city" id="city">
-                New York
+                Jamaica, NY
               </h1>
 
               <p className="weather-app-details">
-                <span id="time">Friday 15:00</span>, {" "}
+                <span id="time">Saturday 11:59PM</span>, {" "}
                 <span id="description">sunny</span>
                 <br />
                 Humidity:{" "}
@@ -75,7 +75,7 @@
             <div className="weather-app-icon" id="icon">☀️
             </div>
 
-            <div className="weather-app-temperature-value" id="temperature">93
+            <div className="weather-app-temperature-value" id="temperature">51
               </div>
               <div className="weather-app-unit">&deg;F
               </div>
