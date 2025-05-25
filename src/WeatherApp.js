@@ -30,7 +30,7 @@
   }
 
   function cityLookup(){
-    let apiKey = "1a747f2d7ac32a100bt13fab8776o6ca";
+    let apiKey = "1210725e217bb8d60abbde5d3ee94832";
     let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
 
     axios.get(apiUrl).then(refreshWeather);
@@ -57,8 +57,8 @@
               </h1>
 
               <p className="weather-app-details">
-                <span id="time">Thursday 11:59PM</span>, {" "}
-                <span id="description">Rain</span>
+                <span id="time">Sunday 11:59PM</span>, {" "}
+                <span id="description">Cloudy</span>
                 <br />
                 Humidity:{" "}
                 <strong>
@@ -72,10 +72,10 @@
             </div>
 
             <div className="weather-app-temperature-container">
-            <div className="weather-app-icon" id="icon">🌧️
+            <div className="weather-app-icon" id="icon">☁️
             </div>
 
-            <div className="weather-app-temperature-value" id="temperature">62
+            <div className="weather-app-temperature-value" id="temperature">65
               </div>
               <div className="weather-app-unit">&deg;F
               </div>
