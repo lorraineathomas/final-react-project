@@ -7,7 +7,7 @@ export default function Forecast(){
         <div className="Forecast">
             <div className="row">
                 <div className="col">
-                    <ReactAnimatedWeather icon={'CLOUDY_DAY'} color={'goldenrod'} size={80} animate={true} />
+                    <ReactAnimatedWeather icon={'SUNNY_DAY'} color={'goldenrod'} size={80} animate={true} />
                 </div>
             </div>
         </div>
