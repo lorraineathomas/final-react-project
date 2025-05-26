@@ -58,8 +58,8 @@
               </h1>
 
               <p className="weather-app-details">
-                <span id="time">Monday 11:59PM</span>, {" "}
-                <span id="description">Sunny</span>
+                <span id="time">Tuesday 11:59PM</span>, {" "}
+                <span id="description">Cloudy</span>
                 <br />
                 Humidity:{" "}
                 <strong>
